@@ -1,0 +1,21 @@
+torch
+torchvision
+diffusers
+transformers
+accelerate
+safetensors
+sentencepiece
+protobuf
+numpy
+pillow
+tqdm
+open-clip-torch
+clean-fid
+scipy
+reportlab
+
+# Optional preference metrics. Install only when running
+# evaluation/evaluate_preference_metrics.py.
+# ImageReward
+# hpsv2
+

@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Local environments
+.env
+.venv/
+venv/
+env/
+
+# Datasets, checkpoints, and caches should stay outside the public repo.
+data/
+datasets/
+coco2017_data/
+hf_cache/
+models_cache/
+checkpoints/
+weights/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+
+# Generated experiment artifacts
+output/
+outputs/
+results/
+runs/
+logs/
+wandb/
+code/results/
+AAAIFig/
+tmp/
+
+# Generated media can be very large; keep selected paper figures explicitly if needed.
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.mp4
+*.gif
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
