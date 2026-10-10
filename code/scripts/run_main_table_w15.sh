@@ -6,12 +6,12 @@ CODE_DIR="${CODE_DIR:-${ROOT}/code}"
 MODEL_PATH="${MODEL_PATH:-${ROOT}/hf_cache}"
 COCO_ANNO="${COCO_ANNO:-${ROOT}/coco2017_data/annotations/captions_val2017.json}"
 COCO_IMG_DIR="${COCO_IMG_DIR:-${ROOT}/coco2017_data/val2017}"
-OUTPUT_META="${OUTPUT_META:-${ROOT}/output_main_1000}"
+OUTPUT_META="${OUTPUT_META:-${ROOT}/output_main_2000}"
 RESULT_DIR="${RESULT_DIR:-${ROOT}/results/sd3_rptg_w15_main}"
-NUM_PROMPTS="${NUM_PROMPTS:-1000}"
+NUM_PROMPTS="${NUM_PROMPTS:-2000}"
 CUDA_DEVICE="${CUDA_DEVICE:-0}"
 
-METHODS=(cfg cfg_rescale apg fdg fdg_plus_apg rptg rptg_hr)
+METHODS=(cfg cfg_rescale adg apg fdg rptg rptg_hr)
 
 cd "${ROOT}"
 
@@ -51,4 +51,3 @@ CUDA_VISIBLE_DEVICES="${CUDA_DEVICE}" python3 "${CODE_DIR}/evaluation/evaluate_c
   --fid_num_workers 0
 
 echo "Main-table results saved to ${RESULT_DIR}/benchmark_results.csv"
-

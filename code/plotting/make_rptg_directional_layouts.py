@@ -81,11 +81,11 @@ def parse_args():
     )
     parser.add_argument(
         "--input_dir",
-        default="/Users/zhuaotian/Desktop/AAAIFig/Fig2/rptg_directional_figure_w15_new_prompts",
+        default="code/results/rptg_directional_figure_w15_new_prompts",
     )
     parser.add_argument(
         "--output_dir",
-        default="/Users/zhuaotian/Documents/Codex/codex_FSG/codex_FSG/RPTG_AAAI2027_Submission/Figures",
+        default="code/results/figures/rptg_directional_layouts",
     )
     parser.add_argument("--thumb_size", type=int, default=190)
     parser.add_argument("--inner_gap", type=int, default=6)

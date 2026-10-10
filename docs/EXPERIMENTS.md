@@ -40,7 +40,7 @@ Default behavior:
 
 - samples 16 COCO captions;
 - generates 8 prompts;
-- runs `cfg`, `apg`, `fdg`, `fdg_plus_apg`, `rptg`, and `rptg_hr`;
+- runs `cfg`, `cfg_rescale`, `adg`, `apg`, `fdg`, `rptg`, and `rptg_hr`;
 - writes results to `/root/autodl-tmp/results/rptg_smoke`.
 
 Smoke-test FID is not a paper result.
@@ -56,14 +56,14 @@ bash code/scripts/run_main_table_w15.sh
 Default methods:
 
 ```text
-cfg cfg_rescale apg fdg fdg_plus_apg rptg rptg_hr
+cfg cfg_rescale adg apg fdg rptg rptg_hr
 ```
 
 Default parameters:
 
 | Parameter | Value |
 |---|---:|
-| samples | 1000 |
+| samples | 2000 |
 | CFG scale | 15.0 |
 | steps | 20 |
 | shift | 3.0 |
@@ -78,8 +78,8 @@ Default parameters:
 Outputs:
 
 ```text
-/root/autodl-tmp/output_main_1000/experiment_metadata.json
-/root/autodl-tmp/output_main_1000/real_images_for_fid/
+/root/autodl-tmp/output_main_2000/experiment_metadata.json
+/root/autodl-tmp/output_main_2000/real_images_for_fid/
 /root/autodl-tmp/results/sd3_rptg_w15_main/
 /root/autodl-tmp/results/sd3_rptg_w15_main/benchmark_results.csv
 ```
@@ -95,13 +95,13 @@ bash code/scripts/run_guidance_scale_sweep_core.sh
 Default scales:
 
 ```text
-3 5 7.5 10 15
+3 5 7.5 10 12.5 15
 ```
 
 Default methods:
 
 ```text
-cfg apg fdg fdg_plus_apg rptg_hr
+cfg adg apg fdg rptg rptg_hr
 ```
 
 Outputs:
@@ -111,6 +111,7 @@ Outputs:
 /root/autodl-tmp/results/scale_sweep_core_w5_1000/benchmark_results.csv
 /root/autodl-tmp/results/scale_sweep_core_w7p5_1000/benchmark_results.csv
 /root/autodl-tmp/results/scale_sweep_core_w10_1000/benchmark_results.csv
+/root/autodl-tmp/results/scale_sweep_core_w12p5_1000/benchmark_results.csv
 /root/autodl-tmp/results/scale_sweep_core_w15_1000/benchmark_results.csv
 ```
 
@@ -123,6 +124,7 @@ python3 code/plotting/plot_guidance_scale_sweep.py \
     /root/autodl-tmp/results/scale_sweep_core_w5_1000/benchmark_results.csv \
     /root/autodl-tmp/results/scale_sweep_core_w7p5_1000/benchmark_results.csv \
     /root/autodl-tmp/results/scale_sweep_core_w10_1000/benchmark_results.csv \
+    /root/autodl-tmp/results/scale_sweep_core_w12p5_1000/benchmark_results.csv \
     /root/autodl-tmp/results/scale_sweep_core_w15_1000/benchmark_results.csv \
   --output_dir /root/autodl-tmp/results/figures/guidance_scale_sweep
 ```
@@ -197,7 +199,7 @@ Purpose: generate paper visual comparisons under difficult high-CFG prompts.
 python3 code/generation/generate_qualitative_stress_prompts.py \
   --output_dir /root/autodl-tmp/results/rptg_qualitative_stress_w15 \
   --model_path /root/autodl-tmp/hf_cache \
-  --methods cfg cfg_rescale apg fdg fdg_plus_apg rptg rptg_hr \
+  --methods cfg cfg_rescale adg apg fdg rptg rptg_hr \
   --cfg_scale 15 \
   --num_steps 20 \
   --shift 3.0 \
@@ -218,9 +220,9 @@ Then run:
 
 ```bash
 python3 code/evaluation/evaluate_preference_metrics.py \
-  --metadata_path /root/autodl-tmp/output_main_1000/experiment_metadata.json \
+  --metadata_path /root/autodl-tmp/output_main_2000/experiment_metadata.json \
   --generated_root /root/autodl-tmp/results/sd3_rptg_w15_main \
-  --methods cfg cfg_rescale apg fdg fdg_plus_apg rptg rptg_hr \
+  --methods cfg cfg_rescale adg apg fdg rptg rptg_hr \
   --batch_size 16
 ```
 
@@ -250,4 +252,3 @@ python3 code/utils/merge_benchmark_parts.py \
   --part_dirs /root/autodl-tmp/results/part0 /root/autodl-tmp/results/part1 \
   --output_dir /root/autodl-tmp/results/merged_run
 ```
-

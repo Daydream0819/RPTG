@@ -87,5 +87,5 @@ This document explains every source file included in the GitHub release.
 | `code/requirements.txt` | Python dependencies for generation, evaluation, and plotting. |
 | `examples/paths.example.env` | Example environment variables for external model/data/result paths. |
 | `docs/EXPERIMENTS.md` | Full paper-experiment reproduction commands. |
+| `docs/ENVIRONMENT.md` | Commands for recording exact hardware and software versions on a reproduction server. |
 | `docs/SD3_EXPERIMENT_PROTOCOL.md` | Fixed protocol notes for dataset, model, baselines, parameters, and evaluation. |
-

@@ -57,16 +57,16 @@ The main table should use a small but strong set of baselines. Optional or histo
 |---|---|---|
 | `cfg` | CFG | Velocity CFG: `v = v_u + w (v_c - v_u)` |
 | `cfg_rescale` | CFG Rescale | Standard CFG followed by conditional-standard-deviation rescaling with factor 0.7 |
+| `adg` | ADG | SD3-style angular clean-anchor guidance with a maximum turn angle of \(\pi/3\) |
 | `apg` | APG | APG-style projection in clean-anchor space: reconstruct `x0_u, x0_c`, project `x0_c - x0_u` against `x0_c`, apply norm clipping and reverse momentum, then map back to velocity |
 | `fdg` | FDG | Clean-anchor Laplacian pyramid; guidance scales are ordered from high to low frequency, default `[w, 1.0]` |
-| `fdg_plus_apg` | FDG+APG | Same Laplacian pyramid guidance, but each pyramid residual is projected before reconstruction, followed by APG clipping and reverse momentum |
 | `rptg` | RPTG | Full-spectrum tangential residual only; `high_radial_scale=0` |
 | `rptg_hr` | RPTG-HR | Full-spectrum tangential residual plus `gamma_H` high-frequency radial residual |
 
 Not recommended for the main table:
 
 - CFG++: include only if the flow-matching migration is carefully justified; otherwise it distracts from the RPTG-vs-FDG/APG question.
-- ADG: include after a reliable implementation is available; otherwise discuss in related work or appendix.
+- FDG+APG: useful as a diagnostic combined baseline, but omitted from the main table to keep the comparison focused on representative guidance-control families.
 
 ## 4. Code Entry Points
 
@@ -143,9 +143,9 @@ The first SD3 table should contain:
 |---|---:|---:|---:|---:|---:|
 | CFG |  |  |  |  |  |
 | CFG Rescale |  |  |  |  |  |
+| ADG |  |  |  |  |  |
 | APG |  |  |  |  |  |
 | FDG |  |  |  |  |  |
-| FDG+APG |  |  |  |  |  |
 | RPTG |  |  |  |  |  |
 | RPTG-HR |  |  |  |  |  |
 

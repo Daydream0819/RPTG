@@ -24,7 +24,7 @@ CUDA_VISIBLE_DEVICES="${CUDA_DEVICE}" python3 "${CODE_DIR}/generation/generate_c
   --real_images_dir "${OUTPUT_META}/real_images_for_fid" \
   --output_dir "${RESULT_DIR}" \
   --model_path "${MODEL_PATH}" \
-  --methods cfg apg fdg fdg_plus_apg rptg rptg_hr \
+  --methods cfg cfg_rescale adg apg fdg rptg rptg_hr \
   --cfg_scale 15 \
   --num_steps 20 \
   --shift 3.0 \
@@ -43,10 +43,9 @@ CUDA_VISIBLE_DEVICES="${CUDA_DEVICE}" python3 "${CODE_DIR}/evaluation/evaluate_c
   --metadata_path "${OUTPUT_META}/experiment_metadata.json" \
   --real_images_dir "${OUTPUT_META}/real_images_for_fid" \
   --generated_root "${RESULT_DIR}" \
-  --methods cfg apg fdg fdg_plus_apg rptg rptg_hr \
+  --methods cfg cfg_rescale adg apg fdg rptg rptg_hr \
   --clip_batch_size 16 \
   --fid_batch_size 32 \
   --fid_num_workers 0
 
 echo "Smoke-test results saved to ${RESULT_DIR}/benchmark_results.csv"
-

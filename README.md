@@ -31,6 +31,8 @@ examples/
 For a file-by-file explanation, see [docs/CODE_MAP.md](docs/CODE_MAP.md).
 For commands that reproduce the paper experiments, see
 [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md).
+For exact hardware and package-version reporting commands, see
+[docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
 
 ## External Assets
 
@@ -110,14 +112,15 @@ The main table uses these seven methods:
 |---|---|---|
 | `cfg` | CFG | Standard velocity-domain classifier-free guidance. |
 | `cfg_rescale` | CFG Rescale | CFG followed by conditional-standard-deviation rescaling. |
+| `adg` | ADG | SD3-style angular clean-anchor guidance. |
 | `apg` | APG | Clean-anchor APG adaptation with projection, clipping, and momentum. |
 | `fdg` | FDG | Clean-anchor Laplacian/frequency guidance. |
-| `fdg_plus_apg` | FDG+APG | FDG update with anchor-space APG stabilization. |
 | `rptg` | RPTG | Full-spectrum tangential residual guidance. |
 | `rptg_hr` | RPTG-HR | RPTG plus controlled high-frequency radial retention. |
 
-The code also contains optional diagnostic baselines such as `adg`, `adg_norm`,
-`rptg_apg`, and `rptg_hr_apg`. These are not required for the main table.
+The code also contains optional diagnostic baselines such as `fdg_plus_apg`,
+`adg_norm`, `rptg_apg`, and `rptg_hr_apg`. These are not required for the main
+table.
 
 ## Reproducibility Rules
 
@@ -126,4 +129,3 @@ The code also contains optional diagnostic baselines such as `adg`, `adg_norm`,
 - For multi-GPU generation, shard by prompt index, not by method.
 - Keep model checkpoints, datasets, outputs, and generated images outside Git.
 - Do not mix outputs from different signatures in the same result directory.
-

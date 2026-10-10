@@ -11,8 +11,8 @@ RESULT_ROOT="${RESULT_ROOT:-${ROOT}/results}"
 NUM_PROMPTS="${NUM_PROMPTS:-1000}"
 CUDA_DEVICE="${CUDA_DEVICE:-0}"
 
-METHODS=(cfg apg fdg fdg_plus_apg rptg_hr)
-SCALES=(3 5 7.5 10 15)
+METHODS=(cfg adg apg fdg rptg rptg_hr)
+SCALES=(3 5 7.5 10 12.5 15)
 
 cd "${ROOT}"
 
@@ -57,4 +57,3 @@ for SCALE in "${SCALES[@]}"; do
 done
 
 echo "Guidance-scale sweep results saved under ${RESULT_ROOT}/scale_sweep_core_w*_${NUM_PROMPTS}"
-
